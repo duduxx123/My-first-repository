@@ -18,29 +18,29 @@ struct kc
 class course
 {
 public:
-	int cnt;    //Ìí¼ÓµÄ¿Î³ÌÊıÁ¿
+	int cnt;    //æ·»åŠ çš„è¯¾ç¨‹æ•°é‡
 	vector<struct kc> C;
 	course();
 	void printfc();
-	void reinf();//ĞŞ¸Ä
-	void deinf();//É¾³ı¿Î³Ì
-	void getinf();//Â¼Èë¿Î³ÌĞÅÏ¢
-	bool filesave(char*temp); //±£´æÎÄ±¾ÎÄ¼ş
-	bool fileread(char*temp); //¶ÁÈ¡ÎÄ±¾ÎÄ¼ş
+	void reinf();//ä¿®æ”¹
+	void deinf();//åˆ é™¤è¯¾ç¨‹
+	void getinf();//å½•å…¥è¯¾ç¨‹ä¿¡æ¯
+	bool filesave(char*temp); //ä¿å­˜æ–‡æœ¬æ–‡ä»¶
+	bool fileread(char*temp); //è¯»å–æ–‡æœ¬æ–‡ä»¶
 };
 
 course::course() {cnt = 0;}
 
 void course::printfc()
 {
-	cout << "¿Î³Ì±àºÅ£¬¿Î³ÌÃû³Æ£¬¿Î³ÌÑ§Ê±£¬¿Î³ÌÑ§·Ö£¬¿ªÑ§Ê±¼ä\n";
+	cout << "è¯¾ç¨‹ç¼–å·ï¼Œè¯¾ç¨‹åç§°ï¼Œè¯¾ç¨‹å­¦æ—¶ï¼Œè¯¾ç¨‹å­¦åˆ†ï¼Œå¼€å­¦æ—¶é—´\n";
 	string a;
 	ifstream infile;
 	infile.open("book.dat", ios::in);
 	if (!infile) {
 		cerr << "Open error!" << endl; exit(1);
 	}
-	/*while (infile >> a)   //ÕâÍæÒâÓöµ½¿Õ¸ñÖ±½Ó½áÊøÁË
+	/*while (infile >> a)   //è¿™ç©æ„é‡åˆ°ç©ºæ ¼ç›´æ¥ç»“æŸäº†
 	{
 		cout << a;
 		cout << ' ';
@@ -57,7 +57,7 @@ void course::printfc()
 void course::reinf()
 {
 	char temp[20];
-	cout << "ÇëÊäÈë¿Î³ÌµÄ±àºÅ»òÕßÃû³Æ" << endl;
+	cout << "è¯·è¾“å…¥è¯¾ç¨‹çš„ç¼–å·æˆ–è€…åç§°" << endl;
 	cin >> temp;
 	ifstream infile;
 	infile.open("book.dat", ios::in);
@@ -72,9 +72,9 @@ void course::reinf()
 		if (strcmp(C.at(i).bianhao, temp) == 0 || strcmp(C.at(i).name, temp) == 0)
 			break;
 	}
-	cout << "²éÑ¯¿Î³ÌĞÅÏ¢Îª";
+	cout << "æŸ¥è¯¢è¯¾ç¨‹ä¿¡æ¯ä¸º";
 	printfc();
-	cout << "\nÇëÊäÈëĞŞ¸ÄºóµÄ ¿Î³Ì±àºÅ£¬¿Î³ÌÃû³Æ£¬¿Î³ÌÑ§Ê±£¬¿Î³ÌÑ§·Ö£¬¿ªÑ§Ê±¼ä£¨xxxx,x,x£©" << endl;
+	cout << "\nè¯·è¾“å…¥ä¿®æ”¹åçš„ è¯¾ç¨‹ç¼–å·ï¼Œè¯¾ç¨‹åç§°ï¼Œè¯¾ç¨‹å­¦æ—¶ï¼Œè¯¾ç¨‹å­¦åˆ†ï¼Œå¼€å­¦æ—¶é—´ï¼ˆxxxx,x,xï¼‰" << endl;
 	getinf();
 	/*cin >> temp;
 	int i = 0;
@@ -83,22 +83,22 @@ void course::reinf()
 		if (strcmp(C.at(i).bianhao, temp) == 0 || strcmp(C.at(i).name, temp) == 0)
 			break;
 	}
-	cout << "²éÑ¯¿Î³ÌĞÅÏ¢Îª" << C.at(i).bianhao << "      " << C.at(i).name << "      " << C.at(i).xueshi << "      "
+	cout << "æŸ¥è¯¢è¯¾ç¨‹ä¿¡æ¯ä¸º" << C.at(i).bianhao << "      " << C.at(i).name << "      " << C.at(i).xueshi << "      "
 		<< C.at(i).xuefen << "      " << C.at(i).kaixueinf << endl;
-	cout << "\nÇëÊäÈëĞŞ¸ÄºóµÄ ¿Î³Ì±àºÅ£¬¿Î³ÌÃû³Æ£¬¿Î³ÌÑ§Ê±£¬¿Î³ÌÑ§·Ö£¬¿ªÑ§Ê±¼ä£¨xxxx,x,x£©" << endl;
+	cout << "\nè¯·è¾“å…¥ä¿®æ”¹åçš„ è¯¾ç¨‹ç¼–å·ï¼Œè¯¾ç¨‹åç§°ï¼Œè¯¾ç¨‹å­¦æ—¶ï¼Œè¯¾ç¨‹å­¦åˆ†ï¼Œå¼€å­¦æ—¶é—´ï¼ˆxxxx,x,xï¼‰" << endl;
 
 	cin >> C.at(i).bianhao;
 	cin >> C.at(i).name;
 	cin >> C.at(i).xueshi;
 	cin >> C.at(i).xuefen;
 	cin >> C.at(i).kaixueinf;
-	cout << "ĞŞ¸Ä³É¹¦" << endl;*/
+	cout << "ä¿®æ”¹æˆåŠŸ" << endl;*/
 }
 
 void course::deinf()
 {
 	char temp[20];
-	cout << "ÇëÊäÈë¿Î³ÌµÄ±àºÅ»òÕßÃû³Æ" << endl;
+	cout << "è¯·è¾“å…¥è¯¾ç¨‹çš„ç¼–å·æˆ–è€…åç§°" << endl;
 	cin >> temp;
 	int i = 0;
 	for (i = 0; i < cnt; i++)
@@ -108,24 +108,24 @@ void course::deinf()
 	}
 	if (i == cnt)
 	{
-		cout << "ÎŞ´Ë¿Î³Ì" << endl;
+		cout << "æ— æ­¤è¯¾ç¨‹" << endl;
 		return;
 	}
-	cout << "É¾³ı¿Î³ÌĞÅÏ¢Îª" << C.at(i).bianhao <<"      "<< C.at(i).name<<"      "
-	<< C.at(i).xueshi << "      " << C.at(i).xuefen << "      " << C.at(i).kaixueinf << "\nÊÇ·ñÈ·ÈÏÉ¾³ı?ÊÇÊäÈë1£¬²»ÊÇÊäÈë0\n";
+	cout << "åˆ é™¤è¯¾ç¨‹ä¿¡æ¯ä¸º" << C.at(i).bianhao <<"      "<< C.at(i).name<<"      "
+	<< C.at(i).xueshi << "      " << C.at(i).xuefen << "      " << C.at(i).kaixueinf << "\næ˜¯å¦ç¡®è®¤åˆ é™¤?æ˜¯è¾“å…¥1ï¼Œä¸æ˜¯è¾“å…¥0\n";
 	int Isde = 0;
 	cin >> Isde;
 	if (Isde)
 	{
-		C.erase(C.begin() + i);  //²ÎÊıÎªµü´úÆ÷µØÖ·
+		C.erase(C.begin() + i);  //å‚æ•°ä¸ºè¿­ä»£å™¨åœ°å€
 		cnt--;
-		cout << "É¾³ı³É¹¦" << endl;
+		cout << "åˆ é™¤æˆåŠŸ" << endl;
 	}
 }
 void course::getinf()
 {
 	int N = 0;
-	cout << "ÇëÊäÈëÒªÂ¼ÈëµÄ¿Î³ÌÊıÁ¿" << endl;
+	cout << "è¯·è¾“å…¥è¦å½•å…¥çš„è¯¾ç¨‹æ•°é‡" << endl;
 	cin >> N;
 	struct kc a;
 	ofstream outfile;
@@ -135,7 +135,7 @@ void course::getinf()
 	}
 	for (int i = 0; i < N; i++)
 	{
-		cout << "ÇëÊäÈë ¿Î³Ì±àºÅ£¬¿Î³ÌÃû³Æ£¬¿Î³ÌÑ§Ê±£¬¿Î³ÌÑ§·Ö£¬¿ªÑ§Ê±¼ä£¨xxxx.x.x£©" << endl;
+		cout << "è¯·è¾“å…¥ è¯¾ç¨‹ç¼–å·ï¼Œè¯¾ç¨‹åç§°ï¼Œè¯¾ç¨‹å­¦æ—¶ï¼Œè¯¾ç¨‹å­¦åˆ†ï¼Œå¼€å­¦æ—¶é—´ï¼ˆxxxx.x.xï¼‰" << endl;
 		cin >> a.bianhao;
 		cin >> a.name;
 		cin >> a.xueshi;
@@ -147,7 +147,7 @@ void course::getinf()
 	}
 	outfile.close();
 
-	cout << "Â¼ÈëÍê³É" << endl;
+	cout << "å½•å…¥å®Œæˆ" << endl;
 }
 bool course::filesave(char*temp)
 {
@@ -155,7 +155,7 @@ bool course::filesave(char*temp)
 	out.open(temp, ios::out);
 	if (out.is_open() == 0)
 		return false;
-	out << "¿Î³ÌĞÅÏ¢" << endl;
+	out << "è¯¾ç¨‹ä¿¡æ¯" << endl;
 	for (int i = 0; i < cnt; i++)
 	{
 
@@ -165,27 +165,27 @@ bool course::filesave(char*temp)
 		out << C.at(i).xuefen << endl;
 		out << C.at(i).xueshi << endl;
 	}
-	out << "Â¼ÈëÍê³É" << endl;
+	out << "å½•å…¥å®Œæˆ" << endl;
 	out.close();
 	return true;
 }
-bool course::fileread(char*temp) //¶ÁÈ¡ÎÄ±¾ÎÄ¼ş
+bool course::fileread(char*temp) //è¯»å–æ–‡æœ¬æ–‡ä»¶
 {
 	char data[20];
 	ifstream in;
 	in.open(temp, ios::in);
 	if (in.is_open() == 0)return false;
 	in >> data;
-	if (strcmp("¿Î³ÌĞÅÏ¢", data) != 0)
+	if (strcmp("è¯¾ç¨‹ä¿¡æ¯", data) != 0)
 	{
-		cout << "²»ÊÇ¿Î³ÌÊı¾İÎÄ¼ş£¬´ò¿ªÊ§°Ü" << endl;
+		cout << "ä¸æ˜¯è¯¾ç¨‹æ•°æ®æ–‡ä»¶ï¼Œæ‰“å¼€å¤±è´¥" << endl;
 		return false;
 	}
 	while (1)
 	{
 		struct kc a;
 		in >> a.bianhao;
-		if (strcmp(a.bianhao, "Â¼ÈëÍê³É") == 0)break;
+		if (strcmp(a.bianhao, "å½•å…¥å®Œæˆ") == 0)break;
 		in >> a.name;
 		in >> a.kaixueinf;
 		in >> a.xuefen;
@@ -212,16 +212,16 @@ public:
 	char yixuankec[256];
 	char yanz[10];
 	char xuehao[20];
-	int kecnt;            //ÒÑÑ¡¿Î³ÌÊıÄ¿
+	int kecnt;            //å·²é€‰è¯¾ç¨‹æ•°ç›®
 
-	student(char *_xuehao = NULL, char *_yanz = NULL);//¹¹Ôì
-	void choiceC(char* _bianhao);                              //Ñ¡¿Î¹¦ÄÜ
-	void checkC();                             //²éÑ¯¹¦ÄÜ
-	void getkc(int cnt, char* temp);           //·µ»ØµÚcnt¸ö¿Î³ÌµÄ±àºÅ
-	void setyanz(char *_yanz);                 //ÉèÖÃÑéÖ¤Âë
-	void setxuehao(char *_xuehao);			  //ÉèÖÃÑ§ºÅ
-	bool xuehaopipei(char *_xuehao);          //Ñ§ºÅÊÇ·ñÆ¥Åä
-	bool yanzpipei(char*_yanz);               //ÑéÖ¤ÂëÊÇ·ñÆ¥Åä
+	student(char *_xuehao = NULL, char *_yanz = NULL);//æ„é€ 
+	void choiceC(char* _bianhao);                              //é€‰è¯¾åŠŸèƒ½
+	void checkC();                             //æŸ¥è¯¢åŠŸèƒ½
+	void getkc(int cnt, char* temp);           //è¿”å›ç¬¬cntä¸ªè¯¾ç¨‹çš„ç¼–å·
+	void setyanz(char *_yanz);                 //è®¾ç½®éªŒè¯ç 
+	void setxuehao(char *_xuehao);			  //è®¾ç½®å­¦å·
+	bool xuehaopipei(char *_xuehao);          //å­¦å·æ˜¯å¦åŒ¹é…
+	bool yanzpipei(char*_yanz);               //éªŒè¯ç æ˜¯å¦åŒ¹é…
 };
 
 student::student(char *_xuehao, char *_yanz)
@@ -232,7 +232,7 @@ student::student(char *_xuehao, char *_yanz)
 	if (_yanz != NULL)strcpy(yanz, _yanz);
 }
 
-void student::choiceC(char* _bianhao)                              //Ñ¡¿Î¹¦ÄÜ
+void student::choiceC(char* _bianhao)                              //é€‰è¯¾åŠŸèƒ½
 {
 	int i = 0;
 	for (i = 0; i < 256; i++)
@@ -247,14 +247,14 @@ void student::choiceC(char* _bianhao)                              //Ñ¡¿Î¹¦ÄÜ
 			break;
 		}
 	}
-	strcpy(yixuankec + i, _bianhao);//´Ë´¦Ã»ÓĞÅĞ¶ÏiÊÇ·ñÔ½½ç
+	strcpy(yixuankec + i, _bianhao);//æ­¤å¤„æ²¡æœ‰åˆ¤æ–­iæ˜¯å¦è¶Šç•Œ
 	kecnt++;
 }
-void student::checkC()									//²éÑ¯¹¦ÄÜ
+void student::checkC()									//æŸ¥è¯¢åŠŸèƒ½
 {
-	cout << "Ñ§ºÅ:" << xuehao << endl;
-	cout<<"µÇÂ½ÑéÖ¤:" << yanz << endl;
-	//cout<<"ÒÑÑ¡¿Î³Ì±àºÅ£º" << yixuankec << endl;
+	cout << "å­¦å·:" << xuehao << endl;
+	cout<<"ç™»é™†éªŒè¯:" << yanz << endl;
+	//cout<<"å·²é€‰è¯¾ç¨‹ç¼–å·ï¼š" << yixuankec << endl;
 
 }
 void student::getkc(int cnt, char* temp)
@@ -282,24 +282,24 @@ void student::getkc(int cnt, char* temp)
 	}
 }
 
-void student::setyanz(char *_yanz)                 //ÖØĞÂÉèÖÃÑéÖ¤Âë
+void student::setyanz(char *_yanz)                 //é‡æ–°è®¾ç½®éªŒè¯ç 
 {
 	strcpy(yanz, _yanz);
-	//cout << "ÉèÖÃ³É¹¦" << endl;
+	//cout << "è®¾ç½®æˆåŠŸ" << endl;
 }
-void student::setxuehao(char *_xuehao)			  //ÉèÖÃÑ§ºÅ
+void student::setxuehao(char *_xuehao)			  //è®¾ç½®å­¦å·
 {
 	strcpy(xuehao, _xuehao);
-	//cout << "ÉêÇë³É¹¦" << endl;
+	//cout << "ç”³è¯·æˆåŠŸ" << endl;
 }
 
-bool student::xuehaopipei(char *_xuehao)          //Ñ§ºÅÊÇ·ñÆ¥Åä
+bool student::xuehaopipei(char *_xuehao)          //å­¦å·æ˜¯å¦åŒ¹é…
 {
 	if (strcmp(xuehao, _xuehao) == 0)
 		return true;
 	else return false;
 }
-bool student::yanzpipei(char*_yanz)              //ÃÜÂëÊÇ·ñÆ¥Åä
+bool student::yanzpipei(char*_yanz)              //å¯†ç æ˜¯å¦åŒ¹é…
 {
 	if (strcmp(yanz, _yanz) == 0)
 		return true;
@@ -313,7 +313,7 @@ bool student::yanzpipei(char*_yanz)              //ÃÜÂëÊÇ·ñÆ¥Åä
 class Teacher :public student
 {
 public:
-	Teacher(char *_xuehao = NULL, char *_yanz = NULL);//¹¹Ôì
+	Teacher(char *_xuehao = NULL, char *_yanz = NULL);//æ„é€ 
 	void checkC();
 	void read(char *zhanghao, char *mima);
 };
@@ -324,28 +324,28 @@ Teacher::Teacher(char *_xuehao, char *_yanz)
 	if (_xuehao != NULL)strcpy(xuehao, _xuehao);
 	if (_yanz != NULL)strcpy(yanz, _yanz);
 }
-void Teacher::checkC()									//²éÑ¯¹¦ÄÜ
+void Teacher::checkC()									//æŸ¥è¯¢åŠŸèƒ½
 {
-	cout << "½ÌÊ¦±àºÅ:" << xuehao << endl;
-	cout << "µÇÂ½ÃÜÂë:" << yanz << endl;
-	//cout << "Ñ§ÉúÒÑÑ¡¿Î³Ì±àºÅ£º" << yixuankec << endl;
+	cout << "æ•™å¸ˆç¼–å·:" << xuehao << endl;
+	cout << "ç™»é™†å¯†ç :" << yanz << endl;
+	//cout << "å­¦ç”Ÿå·²é€‰è¯¾ç¨‹ç¼–å·ï¼š" << yixuankec << endl;
 
 }
 void Teacher::read(char *zhanghao,char *mima)
 {
 	//char zhanghao[20];
 	//char mima[20];
-	//cout << "ÊäÈëÃÜÂë" << endl;
+	//cout << "è¾“å…¥å¯†ç " << endl;
 	//cin.getline(mima, 20, '\n');
 	ofstream outfile;
 	outfile.open("zhangh.dat", ios::out);
 	if (!outfile) {
 		cerr << "Open error!" << endl; exit(1);
 	}
-	cout << "ÊäÈëÕËºÅ:" ;
-	cin.ignore();//²»ÖªµÀÎªÊ²Ã´ÊäÈëÎÄ¼şµÄÊ±ºò»á×Ô¶¯¼ÓÒ»¸ö»»ĞĞËùÒÔÓÃignoreºöÂÔµô
-	cin.getline(zhanghao, 20, '\n');//ÎªÊ²Ã´Òª°´2´Î»Ø³µ£¿£¿£¿£¿£¿£¿£¿£¿£¿
-	outfile << zhanghao;             //ºÃÏñÊÇÒòÎªC++»»ĞĞÊÇ\n»Ø³µÊÇ\rµ«ÊÇÒ²½â¾ö²»ÁË
+	cout << "è¾“å…¥è´¦å·:" ;
+	cin.ignore();//ä¸çŸ¥é“ä¸ºä»€ä¹ˆè¾“å…¥æ–‡ä»¶çš„æ—¶å€™ä¼šè‡ªåŠ¨åŠ ä¸€ä¸ªæ¢è¡Œæ‰€ä»¥ç”¨ignoreå¿½ç•¥æ‰
+	cin.getline(zhanghao, 20, '\n');//ä¸ºä»€ä¹ˆè¦æŒ‰2æ¬¡å›è½¦ï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿ
+	outfile << zhanghao;             //å¥½åƒæ˜¯å› ä¸ºC++æ¢è¡Œæ˜¯\nå›è½¦æ˜¯\rä½†æ˜¯ä¹Ÿè§£å†³ä¸äº†
 	outfile.close();
 
 	ofstream outfile1;
@@ -353,8 +353,8 @@ void Teacher::read(char *zhanghao,char *mima)
 	if (!outfile1){
 		cerr << "Open error!" << endl; exit(1);
 	}
-	cin.ignore();//²»ÖªµÀÎªÊ²Ã´ÊäÈëÎÄ¼şµÄÊ±ºò»á×Ô¶¯¼ÓÒ»¸ö»»ĞĞ
-	cout << "ÊäÈëÃÜÂë:" ;
+	cin.ignore();//ä¸çŸ¥é“ä¸ºä»€ä¹ˆè¾“å…¥æ–‡ä»¶çš„æ—¶å€™ä¼šè‡ªåŠ¨åŠ ä¸€ä¸ªæ¢è¡Œ
+	cout << "è¾“å…¥å¯†ç :" ;
 	cin.getline(mima, 20, '\n');
 	outfile1 << mima;
 	outfile1.close();
@@ -362,41 +362,41 @@ void Teacher::read(char *zhanghao,char *mima)
 }
 
 
-///////////////////mainº¯Êı
+///////////////////mainå‡½æ•°
 
 
 
 int main()
 {
-	system("color F0");   //°Ñ½çÃæ±ä³É°×µ×ºÚ×Ö
-	int quanxiandog = 0;//½ÌÊ¦µÄ¹ÜÀíÔ±È¨ÏŞ
-	course A;   //10ÃÅ¿Î
-	student B[10];  //10¸öÑ§Éú
-	Teacher C[10];//ÀÏÊ¦
+	system("color F0");   //æŠŠç•Œé¢å˜æˆç™½åº•é»‘å­—
+	int quanxiandog = 0;//æ•™å¸ˆçš„ç®¡ç†å‘˜æƒé™
+	course A;   //10é—¨è¯¾
+	student B[10];  //10ä¸ªå­¦ç”Ÿ
+	Teacher C[10];//è€å¸ˆ
 	int stucnt = 0;
 	int dengluflag = -1;
 	while (1)
 	{
 		int SW;
 		cout << "*****************************************" << endl;
-		cout << "»¶Ó­À´µ½Ñ¡¿ÎÏµÍ³,ÇëÑ¡Ôñ±àºÅ½øĞĞ²Ù×÷" << endl;
-		cout << "1.×¢²áÑ§ÉúÕËºÅ" << endl;
-		cout << "2.µÇÂ½Ñ§ÉúÕËºÅ" << endl;
-		cout << "3.×¢²á½ÌÊ¦ÕËºÅ" << endl;
-		cout << "4.µÇÂ¼½ÌÊ¦ÕËºÅ" << endl;
+		cout << "æ¬¢è¿æ¥åˆ°é€‰è¯¾ç³»ç»Ÿ,è¯·é€‰æ‹©ç¼–å·è¿›è¡Œæ“ä½œ" << endl;
+		cout << "1.æ³¨å†Œå­¦ç”Ÿè´¦å·" << endl;
+		cout << "2.ç™»é™†å­¦ç”Ÿè´¦å·" << endl;
+		cout << "3.æ³¨å†Œæ•™å¸ˆè´¦å·" << endl;
+		cout << "4.ç™»å½•æ•™å¸ˆè´¦å·" << endl;
 		cout << "*****************************************" << endl;
 		cin >> SW;
 		switch (SW)
 		{
 		case 1:
 			char temp[20];
-			cout << "ÇëÊäÈë×¢²áÑ§ºÅÕËºÅ" << endl;
+			cout << "è¯·è¾“å…¥æ³¨å†Œå­¦å·è´¦å·" << endl;
 			cin >> temp;
 			B[stucnt].setxuehao(temp);
-			cout << "ÇëÊäÈëµÇÂ½ÑéÖ¤ÃÜÂë" << endl;
+			cout << "è¯·è¾“å…¥ç™»é™†éªŒè¯å¯†ç " << endl;
 			cin >> temp;
 			B[stucnt].setyanz(temp);
-			cout << "×¢²á³É¹¦,×¢²áĞÅÏ¢ÈçÏÂ" << endl;
+			cout << "æ³¨å†ŒæˆåŠŸ,æ³¨å†Œä¿¡æ¯å¦‚ä¸‹" << endl;
 			B[stucnt].checkC();
 			stucnt++;
 			system("pause");
@@ -405,11 +405,11 @@ int main()
 		{
 			char temp1[10], ch1;
 			int j = 0;
-			cout << "ÇëÊäÈëÑ§ºÅÕËºÅ" << endl;
+			cout << "è¯·è¾“å…¥å­¦å·è´¦å·" << endl;
 			cin >> temp;
-		go1:cout << "ÇëÊäÈëµÇÂ½ÑéÖ¤ÃÜÂë" << endl;
+		go1:cout << "è¯·è¾“å…¥ç™»é™†éªŒè¯å¯†ç " << endl;
 			//cin >> temp1;
-			while ((ch1 = _getch()) != '\r')  //ÓÃgetchº¯ÊıÊµÏÖÃÜÂëÒş²Ø
+			while ((ch1 = _getch()) != '\r')  //ç”¨getchå‡½æ•°å®ç°å¯†ç éšè—
 			{
 				if (ch1 == '\b' && j > 0)
 				{
@@ -429,18 +429,18 @@ int main()
 				{
 					if (B[i].yanzpipei(temp1) == true)
 					{
-						cout << "\nµÇÂ½³É¹¦" << endl;
+						cout << "\nç™»é™†æˆåŠŸ" << endl;
 						dengluflag = i;
 					}
 					else
 					{
-						cout << "\nÑéÖ¤ÃÜÂë´íÎó£¬ÖØÊÔ" << endl;
+						cout << "\néªŒè¯å¯†ç é”™è¯¯ï¼Œé‡è¯•" << endl;
 						j = 0;
 						goto go1;
 					}
 				}
 			}
-			if (dengluflag < 0)cout << "Ñ§ºÅ²»´æÔÚ" << endl;
+			if (dengluflag < 0)cout << "å­¦å·ä¸å­˜åœ¨" << endl;
 			system("pause");
 			break;
 		}
@@ -448,9 +448,9 @@ int main()
 			char zhanghao[20];
 			char mima[20];
 			C[stucnt].read(zhanghao, mima);
-			cout << "×¢²á³É¹¦" << endl;
-			//cout << "ÕËºÅÎª:" << zhanghao << endl;
-			//cout << "ÃÜÂëÎª:" << mima << endl;
+			cout << "æ³¨å†ŒæˆåŠŸ" << endl;
+			//cout << "è´¦å·ä¸º:" << zhanghao << endl;
+			//cout << "å¯†ç ä¸º:" << mima << endl;
 			C[stucnt].setxuehao(zhanghao);
 			C[stucnt].setyanz(mima);
 			C[stucnt].checkC();
@@ -458,13 +458,13 @@ int main()
 			system("pause");
 			break;
 			/*char temp2[20];
-			cout << "ÇëÊäÈë½ÌÊ¦ÕËºÅ" << endl;
+			cout << "è¯·è¾“å…¥æ•™å¸ˆè´¦å·" << endl;
 			cin >> temp2;
 			C[stucnt].setxuehao(temp2);
-			cout << "ÇëÊäÈëµÇÂ½ÑéÖ¤ÃÜÂë" << endl;
+			cout << "è¯·è¾“å…¥ç™»é™†éªŒè¯å¯†ç " << endl;
 			cin >> temp2;
 			C[stucnt].setyanz(temp2);
-			cout << "×¢²á³É¹¦,×¢²áĞÅÏ¢ÈçÏÂ" << endl;
+			cout << "æ³¨å†ŒæˆåŠŸ,æ³¨å†Œä¿¡æ¯å¦‚ä¸‹" << endl;
 			C[stucnt].checkC();
 			stucnt++;
 			system("pause");
@@ -489,16 +489,16 @@ int main()
 			infile1 >> C[stucnt].yanz;
 			infile1.close();
 
-			/////////////////////////////////////////////////////Ì«ÃÜÁË¶¼ÕÒ²»µ½ÁË
+			/////////////////////////////////////////////////////å¤ªå¯†äº†éƒ½æ‰¾ä¸åˆ°äº†
 			
 			char temp3[10];
 			char ch;
 			int i = 0;
-			cout << "ÇëÊäÈë½ÌÊ¦ÕËºÅ" << endl;
+			cout << "è¯·è¾“å…¥æ•™å¸ˆè´¦å·" << endl;
 			cin >> temp;
-		go2:cout << "ÇëÊäÈëµÇÂ½ÑéÖ¤ÃÜÂë" << endl;
+		go2:cout << "è¯·è¾“å…¥ç™»é™†éªŒè¯å¯†ç " << endl;
 			//cin >> temp3;
-			while ((ch = _getch()) != '\r')  //ÓÃgetchº¯ÊıÊµÏÖÃÜÂëÒş²Ø
+			while ((ch = _getch()) != '\r')  //ç”¨getchå‡½æ•°å®ç°å¯†ç éšè—
 			{
 				if (ch == '\b' && i > 0)
 				{
@@ -513,26 +513,26 @@ int main()
 			}
 			temp3[i] = '\0';
 			//cout << "\n" << temp3;
-			//for (int i = 0; i < stucnt; i++) //ÒòÎªÈç¹ûÍ¨¹ı¶ÁÈ¡ÎÄ¼ş¶ø²»ÊÇ×¢²áµÄ»°stucnt¾Í²»»á+1
+			//for (int i = 0; i < stucnt; i++) //å› ä¸ºå¦‚æœé€šè¿‡è¯»å–æ–‡ä»¶è€Œä¸æ˜¯æ³¨å†Œçš„è¯stucntå°±ä¸ä¼š+1
 			//{
 				if (C[stucnt].xuehaopipei(temp) == true)
 				{
 					if (C[stucnt].yanzpipei(temp3) == true)
 					{
-						cout << "\nµÇÂ½³É¹¦" << endl;
+						cout << "\nç™»é™†æˆåŠŸ" << endl;
 						dengluflag = 1;//i
 						quanxiandog = 1;
 					}
 					else
 					{
-						cout << "ÑéÖ¤ÃÜÂë´íÎó£¬ÖØÊÔ" << endl;
+						cout << "éªŒè¯å¯†ç é”™è¯¯ï¼Œé‡è¯•" << endl;
 						i = 0;
-						goto go2;//ÖØ¶¨Òå
+						goto go2;//é‡å®šä¹‰
 					}
 				}
 			//}
 			if (dengluflag < 0)
-				cout << "ÕËºÅ²»´æÔÚ" << endl;
+				cout << "è´¦å·ä¸å­˜åœ¨" << endl;
 			system("pause");
 			break;
 
@@ -542,15 +542,15 @@ int main()
 			{
 				system("cls");
 				int SW1 = 0;
-				cout << "»¶Ó­µÇÂ½£¬ÇëÑ¡Ôñ¹¦ÄÜ±àºÅ" << endl;
-				cout << "1.¿Î³ÌĞÅÏ¢Â¼Èë" << endl;
-				cout << "2.¿Î³ÌĞÅÏ¢ĞŞ¸Ä" << endl;
-				cout << "3.¿Î³ÌĞÅÏ¢É¾³ı" << endl;
-				cout << "4.¿Î³ÌĞÅÏ¢ä¯ÀÀ" << endl;
-				cout << "5.¿ªÊ¼Ñ¡¿Î" << endl;
-				cout << "6.Ñ¡¿Î½á¹û²éÑ¯" << endl;
-				cout << "7.¿Î³ÌĞÅÏ¢±£´æ" << endl;
-				cout << "8.ÍË³öµÇÂ½" << endl;
+				cout << "æ¬¢è¿ç™»é™†ï¼Œè¯·é€‰æ‹©åŠŸèƒ½ç¼–å·" << endl;
+				cout << "1.è¯¾ç¨‹ä¿¡æ¯å½•å…¥" << endl;
+				cout << "2.è¯¾ç¨‹ä¿¡æ¯ä¿®æ”¹" << endl;
+				cout << "3.è¯¾ç¨‹ä¿¡æ¯åˆ é™¤" << endl;
+				cout << "4.è¯¾ç¨‹ä¿¡æ¯æµè§ˆ" << endl;
+				cout << "5.å¼€å§‹é€‰è¯¾" << endl;
+				cout << "6.é€‰è¯¾ç»“æœæŸ¥è¯¢" << endl;
+				cout << "7.è¯¾ç¨‹ä¿¡æ¯ä¿å­˜" << endl;
+				cout << "8.é€€å‡ºç™»é™†" << endl;
 				cin >> SW1;
 				switch (SW1)
 				{
@@ -561,31 +561,31 @@ int main()
 					if (quanxiandog) {
 						int a1 = 0;
 						system("cls");
-						cout << "1.ÊÖ¶¯Â¼Èë" << endl;
-						cout << "2.´ÓÎÄ¼ş¶ÁÈ¡¿Î³ÌĞÅÏ¢" << endl;
+						cout << "1.æ‰‹åŠ¨å½•å…¥" << endl;
+						cout << "2.ä»æ–‡ä»¶è¯»å–è¯¾ç¨‹ä¿¡æ¯" << endl;
 						cin >> a1;
 						if (a1 == 1)A.getinf();
 						else
 						{
-							cout << "ÇëÊäÈëÂ¼ÈëÎÄ¼şµØÖ·:";
+							cout << "è¯·è¾“å…¥å½•å…¥æ–‡ä»¶åœ°å€:";
 							char adress1[256];
 							cin >> adress1;
-							if (A.fileread(adress1) == true)cout << "Â¼Èë³É¹¦" << endl;
+							if (A.fileread(adress1) == true)cout << "å½•å…¥æˆåŠŸ" << endl;
 						}
-					}else cout << "ÄãµÄÈ¨ÏŞ²»×ã" << endl;
+					}else cout << "ä½ çš„æƒé™ä¸è¶³" << endl;
 					system("pause");
 					break;
 				}
 				case 2:
 					if(quanxiandog)
 						A.reinf();
-					else cout << "ÄãµÄÈ¨ÏŞ²»×ã" << endl;
+					else cout << "ä½ çš„æƒé™ä¸è¶³" << endl;
 					system("pause");
 					break;
 				case 3:
 					if (quanxiandog)
 						A.deinf();
-					else cout << "ÄãµÄÈ¨ÏŞ²»×ã" << endl;
+					else cout << "ä½ çš„æƒé™ä¸è¶³" << endl;
 					system("pause");
 					break;
 				case 4:
@@ -594,14 +594,14 @@ int main()
 					break;
 				case 5:
 					if (quanxiandog) {
-						cout << "½ÌÊ¦ÎŞ·¨Ñ¡¿Î" << endl;
+						cout << "æ•™å¸ˆæ— æ³•é€‰è¯¾" << endl;
 						break;
 					}
 					A.printfc();
-					cout << "ÇëÊäÈëÒªÑ¡µÄ¿Î³Ì±àºÅ" << endl;
+					cout << "è¯·è¾“å…¥è¦é€‰çš„è¯¾ç¨‹ç¼–å·" << endl;
 					cin >> temp;
 					B[dengluflag].choiceC(temp);
-					cout << "Ñ¡¿Î³É¹¦" << endl;
+					cout << "é€‰è¯¾æˆåŠŸ" << endl;
 					system("pause");
 					break;
 				case 6:
@@ -609,13 +609,13 @@ int main()
 					system("cls");
 					int sw = 0;
 					int i = 0;
-					cout << "1.°´Ñ§ºÅ²éÑ¯Ñ§ÉúÑ¡¿ÎÇé¿ö" << endl;
-					cout << "2.°´¿Î³Ì²éÑ¯Ñ§ÉúÑ¡¿ÎÇé¿ö" << endl;
+					cout << "1.æŒ‰å­¦å·æŸ¥è¯¢å­¦ç”Ÿé€‰è¯¾æƒ…å†µ" << endl;
+					cout << "2.æŒ‰è¯¾ç¨‹æŸ¥è¯¢å­¦ç”Ÿé€‰è¯¾æƒ…å†µ" << endl;
 					cin >> sw;
 					switch (sw)
 					{
 					case 1:
-						cout << "ÇëÊäÈëÑ§ºÅ" << endl;
+						cout << "è¯·è¾“å…¥å­¦å·" << endl;
 						cin >> temp;
 						for (i = 0; i < stucnt; i++)
 						{
@@ -625,9 +625,9 @@ int main()
 						break;
 					case 2:
 						char temp62[20];
-						cout << "ÇëÊäÈë²éÑ¯¿Î³Ì±àºÅ" << endl;
+						cout << "è¯·è¾“å…¥æŸ¥è¯¢è¯¾ç¨‹ç¼–å·" << endl;
 						cin >> temp62;
-						cout << "Ñ¡Ôñ´ËÃÅ¿Î³ÌµÄÑ§ºÅÓĞ" << endl;
+						cout << "é€‰æ‹©æ­¤é—¨è¯¾ç¨‹çš„å­¦å·æœ‰" << endl;
 						for (int i = 0; i < stucnt; i++)
 						{
 							for (int j = 1; j <= B[i].kecnt; j++)
@@ -646,10 +646,10 @@ int main()
 				case 7:
 				{
 					char adress7[256];
-					cout << "ÇëÊäÈëÎÄ¼şµÄ±£´æµØÖ·£º";
+					cout << "è¯·è¾“å…¥æ–‡ä»¶çš„ä¿å­˜åœ°å€ï¼š";
 					cin >> adress7;
-					if (A.filesave(adress7) == true)cout << "±£´æ³É¹¦";
-					else cout << "±£´æÊ§°Ü" << endl;
+					if (A.filesave(adress7) == true)cout << "ä¿å­˜æˆåŠŸ";
+					else cout << "ä¿å­˜å¤±è´¥" << endl;
 					break;
 				}
 				case 8:
@@ -658,7 +658,7 @@ int main()
 				}
 				if (dengluflag == -1)
 				{
-					cout << "ÕıÔÚÍË³öµÇÂ¼...." << endl;
+					cout << "æ­£åœ¨é€€å‡ºç™»å½•...." << endl;
 					break;
 				}
 				Sleep(500);
