@@ -1,14 +1,5 @@
 # 用于保存代码
 Use the `printf()` function.
-
-```java
-// FileName: HelloWorld.java
-public class HelloWorld {
-  // Java 入口程序，程序从此入口
-  public static void main(String[] args) {
-    System.out.println("Hello,World!"); // 向控制台打印一条语句
-  }
-}
 ```
 在需要高亮的代码块的前一行及后一行使用三个反引号，同时**第一行反引号后面表示代码块所使用的语言**，如下：
 
