@@ -1,5 +1,5 @@
 # 数据结构学习 树的同构
-# C++代码
+## C++代码
 ``` C++
 #include<iostream>
 #include<string>
