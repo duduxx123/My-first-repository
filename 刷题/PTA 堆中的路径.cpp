@@ -7,7 +7,7 @@ typedef struct HeapStruct{
     int H[MAXN];
     int size;
 }*Heap;
-Heap Create(){//建立空最小堆
+Heap Create(){//寤虹珛绌烘渶灏忓爢
     Heap P=new struct HeapStruct;
     P->size=0;
     P->H[0]=MINH;
@@ -16,7 +16,7 @@ Heap Create(){//建立空最小堆
 void Insert(int X,Heap P){
     int i;
     if(P->size==MAXN-1){
-        cerr<<"最小堆已满"<<endl;
+        cerr<<"鏈�灏忓爢宸叉弧"<<endl;
         return;
     }
     i=++P->size;
