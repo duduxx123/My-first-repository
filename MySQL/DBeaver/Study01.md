@@ -5,7 +5,7 @@ use dbtest1;
 select * from dbtest1.employee;
  #MySQL DBever
 show tables;
-insert into employee value(1028,'蒋海瑞');
+insert into employee value(1028,'JHR');
 #最基本的select语句:select 字段1，字段2... from 表名
 select 1+1,3*2
 from dual; #dual是伪表，不加from dual也行
