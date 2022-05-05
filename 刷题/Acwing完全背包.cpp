@@ -1,4 +1,3 @@
-``` C++
 #include <iostream>
 using namespace std;
 const int MAX = 1010;
@@ -18,4 +17,3 @@ int main()
     cout<<f[V]<<endl;
     return 0;
 }
-```
