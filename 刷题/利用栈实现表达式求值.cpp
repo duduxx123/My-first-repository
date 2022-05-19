@@ -29,7 +29,7 @@ bool isEmpty(Sta s) {
 		return true;
 	else return false;
 }
-int youxianji(int fu) {//»ñÈ¡·ûºÅÓÅÏÈ¼¶
+int youxianji(int fu) {//è·å–ç¬¦å·ä¼˜å…ˆçº§
 	char fuhao=fu;
 	int x=-1;
 	switch (fuhao)
@@ -51,13 +51,13 @@ int youxianji(int fu) {//»ñÈ¡·ûºÅÓÅÏÈ¼¶
 	}
 	return x;
 }
-bool isnum(int a) {//ÅĞ¶ÏÊÇ·ñÎªÊı×Ö
+bool isnum(int a) {//åˆ¤æ–­æ˜¯å¦ä¸ºæ•°å­—
 	char n = a;
 	if (n != '+' && n != '-' && n != '*' && n != '/' && n != '(' && n != ')')
 		return true;
 	else return false;
 }
-int calculate(int a, int b, int e) {//ÓÃÓÚ¼ÆËã
+int calculate(int a, int b, int e) {//ç”¨äºè®¡ç®—
 	char fu = e;
 	int c=-1;
 	switch (fu) {
@@ -78,9 +78,9 @@ int calculate(int a, int b, int e) {//ÓÃÓÚ¼ÆËã
 	}
 	return c;
 }
-bool isnotIllegal(string s) {//ÅĞ¶Ï±í´ïÊ½ÊÇ·ñºÏ·¨
-	int flag=0;//¼ÇÂ¼×óÀ¨ºÅ
-	int idx = 0;//¼ÇÂ¼ÓÒÀ¨ºÅ
+bool isnotIllegal(string s) {//åˆ¤æ–­è¡¨è¾¾å¼æ˜¯å¦åˆæ³•
+	int flag=0;//è®°å½•å·¦æ‹¬å·
+	int idx = 0;//è®°å½•å³æ‹¬å·
 	if (s[0] == ')')
 		return false;
 	else if (s[0] == '(')
@@ -103,27 +103,27 @@ bool isnotIllegal(string s) {//ÅĞ¶Ï±í´ïÊ½ÊÇ·ñºÏ·¨
 }
 int zhongzhuizhuanhouzhui(string suanshi) {
 	if (!isnotIllegal(suanshi)) {
-		cerr << "±í´ïÊ½²»ÕıÈ·" << endl;
+		cerr << "è¡¨è¾¾å¼ä¸æ­£ç¡®" << endl;
 		return -1000;
 	}
-	Sta shuzi = new stack;//Êı×ÖÕ»
-	Sta fuhao = new stack;//·ûºÅÕ»
+	Sta shuzi = new stack;//æ•°å­—æ ˆ
+	Sta fuhao = new stack;//ç¬¦å·æ ˆ
 	shuzi->top = -1;
 	fuhao->top = -1;
 	int c;
-	int x, y;//»ñÈ¡ÓÅÏÈ¼¶µÄ±äÁ¿
+	int x, y;//è·å–ä¼˜å…ˆçº§çš„å˜é‡
 	for (int i = 0;i < suanshi.length();i++) {
-		c=suanshi[i];//ÀÁµÃ´òÄÇÃ´¶àÁË£»
+		c=suanshi[i];//æ‡’å¾—æ‰“é‚£ä¹ˆå¤šäº†ï¼›
 		if (isnum(c))
 			push(shuzi, c-'0');
-		else {//Èç¹ûÊÇ·ûºÅ
+		else {//å¦‚æœæ˜¯ç¬¦å·
 			if (isEmpty(fuhao) || c=='(')
 				push(fuhao, c);
 			else {
-				if ((char)c == ')') {//Óöµ½ÓÒÀ¨ºÅ£¬ÔòÖ±½Ó³öÕ»²¢¼ÆËã£¬Ö±µ½Óöµ½×óÀ¨ºÅ
-					int e;//½ÓÊÕ·ûºÅ
-					int a, b;//½ÓÊÕÊı×Ö
-					int c;//½ÓÊÕ¼ÆËã½á¹û
+				if ((char)c == ')') {//é‡åˆ°å³æ‹¬å·ï¼Œåˆ™ç›´æ¥å‡ºæ ˆå¹¶è®¡ç®—ï¼Œç›´åˆ°é‡åˆ°å·¦æ‹¬å·
+					int e;//æ¥æ”¶ç¬¦å·
+					int a, b;//æ¥æ”¶æ•°å­—
+					int c;//æ¥æ”¶è®¡ç®—ç»“æœ
 					while ((char)fuhao->data[fuhao->top] != '(') {
 						pop(fuhao,e);
 						pop(shuzi, b);
@@ -131,8 +131,8 @@ int zhongzhuizhuanhouzhui(string suanshi) {
 						c = calculate(a, b, e);
 						push(shuzi, c);
 					}
-					pop(fuhao, e);//µ¯³ö×óÀ¨ºÅ
-				}else if (youxianji(c) > youxianji(gettop(fuhao)) || (char)gettop(fuhao)=='(')//Ğ¡ÓÚÕ»¶¥·ûºÅÓÅÏÈ¼¶»òÕ»¶¥ÊÇ'('
+					pop(fuhao, e);//å¼¹å‡ºå·¦æ‹¬å·
+				}else if (youxianji(c) > youxianji(gettop(fuhao)) || (char)gettop(fuhao)=='(')//å°äºæ ˆé¡¶ç¬¦å·ä¼˜å…ˆçº§æˆ–æ ˆé¡¶æ˜¯'('
 						push(fuhao, c);
 				else if (youxianji(c) <= youxianji(fuhao->data[fuhao->top])) {
 						int e1;
