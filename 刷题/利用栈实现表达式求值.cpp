@@ -117,7 +117,7 @@ int zhongzhuizhuanhouzhui(string suanshi) {
 		if (isnum(c))
 			push(shuzi, c-'0');
 		else {//如果是符号
-			if (isEmpty(fuhao) || c=='(')
+			if (isEmpty(fuhao) || c=='(')////符号栈空或者遇到左括号直接入栈
 				push(fuhao, c);
 			else {
 				if ((char)c == ')') {//遇到右括号，则直接出栈并计算，直到遇到左括号
@@ -143,7 +143,7 @@ int zhongzhuizhuanhouzhui(string suanshi) {
 						pop(shuzi, a1);
 						c1 = calculate(a1, b1, e1);
 						push(shuzi, c1);
-						push(fuhao, c);
+						push(fuhao, c);//差点忘了
 				}
 			}
 		}
