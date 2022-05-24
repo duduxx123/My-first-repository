@@ -78,7 +78,7 @@ int calculate(int a, int b, int e) {//用于计算
 	}
 	return c;
 }
-bool isnotIllegal(string s) {//判断表达式是否合法
+/*bool isnotIllegal(string s) {//判断表达式是否合法   //没什么用了，辛苦了
 	int flag=0;//记录左括号
 	int idx = 0;//记录右括号
 	if (s[0] == ')')
@@ -100,24 +100,39 @@ bool isnotIllegal(string s) {//判断表达式是否合法
 	if (flag != idx)
 		return false;
 	return true;
-}
+}*/
 int zhongzhuizhuanhouzhui(string suanshi) {
-	if (!isnotIllegal(suanshi)) {
-		cerr << "表达式不正确" << endl;
-		return -1000;
-	}
+	//if (!isnotIllegal(suanshi)) {
+	//	cerr << "表达式不正确" << endl;
+	//	return -1000;
+	//}
 	Sta shuzi = new stack;//数字栈
 	Sta fuhao = new stack;//符号栈
 	shuzi->top = -1;
 	fuhao->top = -1;
 	int c;
+	int f=-1;//用来判断大数的参数
 	int x, y;//获取优先级的变量
 	for (int i = 0;i < suanshi.length();i++) {
 		c=suanshi[i];//懒得打那么多了；
-		if (isnum(c))
-			push(shuzi, c-'0');
+		if (i < f)
+			continue;
+		if (isnum(c)) {
+			f = i;
+			int idx = c;
+			int n = 0;//存储大数
+			while (isnum(idx)) {
+				f++;
+				n = 10 * n + (idx - '0');
+				if (f < suanshi.length())//之前一直没打这个，运行时一直异常，原因是字符串下标越界了
+					idx = suanshi[f];
+				else break;
+			}
+			push(shuzi, n);
+			//push(shuzi, c - '0');
+		}
 		else {//如果是符号
-			if (isEmpty(fuhao) || c=='(')////符号栈空或者遇到左括号直接入栈
+			if (isEmpty(fuhao) || (char)c=='(')//符号栈空或者遇到左括号直接入栈
 				push(fuhao, c);
 			else {
 				if ((char)c == ')') {//遇到右括号，则直接出栈并计算，直到遇到左括号
@@ -149,11 +164,15 @@ int zhongzhuizhuanhouzhui(string suanshi) {
 		}
 	}
 	int a2, b2, e2;
-	while (fuhao->top != -1) {
+	while (fuhao->top != -1) {//把栈里剩下的符号计算完
 		b2 = shuzi->data[shuzi->top--];
 		a2 = shuzi->data[shuzi->top--];
 		e2 = fuhao->data[fuhao->top--];
 		shuzi->data[++shuzi->top]=calculate(a2,b2,e2);
+	}
+	if (fuhao->top != -1 || shuzi->top != 0) {//如果栈里还有东西则表达式错误
+		cerr << "表达式不正确" << endl;
+		return -1000;
 	}
 	return gettop(shuzi);
 	/*while (shuzi->data[shuzi->top] != -1) {
@@ -163,8 +182,7 @@ int zhongzhuizhuanhouzhui(string suanshi) {
 	//return 9;
 }
 int main() {
-	string suanshi="(1+5)/3-5";
-	//cin >> suanshi;
+	string suanshi="(13+5)/3-5";
 	int answer=zhongzhuizhuanhouzhui(suanshi);
 	cout << suanshi << "=" << answer << endl;
 	return 0;
