@@ -14,7 +14,7 @@ class GUIClient1  extends JFrame
 		setSize(400, 500);
 		setLayout(new FlowLayout());
 		tf=new JTextField(30);
-		bt=new JButton("·¢ËÍ");
+		bt=new JButton("å‘é€");
 		ta=new JTextArea(20,30);
 		JScrollPane sc=new JScrollPane(ta);
 		add(tf);
