@@ -46,7 +46,7 @@ int youxianji(int fu) {//获取符号优先级
 		x = 3;
 		break;
 	default:
-		cout << "ERROR" << endl;
+		cerr << "ERROR" << endl;
 		break;
 	}
 	return x;
@@ -78,7 +78,7 @@ int calculate(int a, int b, int e) {//用于计算
 	}
 	return c;
 }
-/*bool isnotIllegal(string s) {//判断表达式是否合法   //没什么用了，辛苦了
+bool isnotIllegal(string s) {//判断表达式是否合法
 	int flag=0;//记录左括号
 	int idx = 0;//记录右括号
 	if (s[0] == ')')
@@ -86,8 +86,6 @@ int calculate(int a, int b, int e) {//用于计算
 	else if (s[0] == '(')
 		flag++;
 	for (int i = 1;i < s.length();i++) {
-		if (isnum(s[i]) && isnum(s[i - 1]))
-			return false;
 		if (!isnum(s[i]) && !isnum(s[i - 1]) && s[i]!='(' && s[i] != ')' && s[i - 1] != '(' && s[i - 1] != ')')
 			return false;
 		if (flag == 0 && s[i] == ')')
@@ -100,12 +98,12 @@ int calculate(int a, int b, int e) {//用于计算
 	if (flag != idx)
 		return false;
 	return true;
-}*/
+}
 int zhongzhuizhuanhouzhui(string suanshi) {
-	//if (!isnotIllegal(suanshi)) {
-	//	cerr << "表达式不正确" << endl;
-	//	return -1000;
-	//}
+	if (!isnotIllegal(suanshi)) {
+ERR:	cerr << "表达式不正确" << endl;
+		return -1000;
+	}
 	Sta shuzi = new stack;//数字栈
 	Sta fuhao = new stack;//符号栈
 	shuzi->top = -1;
@@ -139,10 +137,12 @@ int zhongzhuizhuanhouzhui(string suanshi) {
 					int e;//接收符号
 					int a, b;//接收数字
 					int c;//接收计算结果
+					int flag = 0;//
 					while ((char)fuhao->data[fuhao->top] != '(') {
 						pop(fuhao,e);
 						pop(shuzi, b);
-						pop(shuzi, a);
+						if (!pop(shuzi, a))
+							goto ERR;      //避免了如果先输入符号而且数字栈中只有一个数导致的变量a未被赋值(如果pop失败直接返回ERROR)
 						c = calculate(a, b, e);
 						push(shuzi, c);
 					}
@@ -155,7 +155,8 @@ int zhongzhuizhuanhouzhui(string suanshi) {
 						int c1;
 						pop(fuhao, e1);
 						pop(shuzi, b1);
-						pop(shuzi, a1);
+						if (!pop(shuzi, a1))
+							goto ERR;      //避免了如果先输入符号而且数字栈中只有一个数导致的变量a未被赋值
 						c1 = calculate(a1, b1, e1);
 						push(shuzi, c1);
 						push(fuhao, c);//差点忘了
@@ -163,11 +164,15 @@ int zhongzhuizhuanhouzhui(string suanshi) {
 			}
 		}
 	}
-	int a2, b2, e2;
+	int a2=0, b2=0, e2;
 	while (fuhao->top != -1) {//把栈里剩下的符号计算完
-		b2 = shuzi->data[shuzi->top--];
-		a2 = shuzi->data[shuzi->top--];
-		e2 = fuhao->data[fuhao->top--];
+		//b2 = shuzi->data[shuzi->top--];
+		//a2 = shuzi->data[shuzi->top--];
+		//e2 = fuhao->data[fuhao->top--];
+		pop(shuzi, b2);
+		if (!pop(shuzi, a2))
+			goto ERR;////
+		pop(fuhao, e2);
 		shuzi->data[++shuzi->top]=calculate(a2,b2,e2);
 	}
 	if (fuhao->top != -1 || shuzi->top != 0) {//如果栈里还有东西则表达式错误
@@ -182,9 +187,9 @@ int zhongzhuizhuanhouzhui(string suanshi) {
 	//return 9;
 }
 int main() {
-	string suanshi="(13+5)/3-5";
-	int answer=zhongzhuizhuanhouzhui(suanshi);
+	string suanshi="(12+50/2)-(6*8/4)";
+	cin >> suanshi;
+	int answer = zhongzhuizhuanhouzhui(suanshi);
 	cout << suanshi << "=" << answer << endl;
 	return 0;
 }
-
