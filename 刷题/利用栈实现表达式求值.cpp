@@ -104,6 +104,7 @@ int zhongzhuizhuanhouzhui(string suanshi) {
 ERR:	cerr << "表达式不正确" << endl;
 		return -1000;
 	}
+	cout << "后缀表达式:";
 	Sta shuzi = new stack;//数字栈
 	Sta fuhao = new stack;//符号栈
 	shuzi->top = -1;
@@ -127,6 +128,7 @@ ERR:	cerr << "表达式不正确" << endl;
 				else break;
 			}
 			push(shuzi, n);
+			cout << n << " ";////
 			//push(shuzi, c - '0');
 		}
 		else {//如果是符号
@@ -140,6 +142,7 @@ ERR:	cerr << "表达式不正确" << endl;
 					int flag = 0;//
 					while ((char)fuhao->data[fuhao->top] != '(') {
 						pop(fuhao,e);
+						cout <<(char)e<<" ";////
 						pop(shuzi, b);
 						if (!pop(shuzi, a))
 							goto ERR;      //避免了如果先输入符号而且数字栈中只有一个数导致的变量a未被赋值(如果pop失败直接返回ERROR)
@@ -154,6 +157,7 @@ ERR:	cerr << "表达式不正确" << endl;
 						int a1, b1;
 						int c1;
 						pop(fuhao, e1);
+						cout << (char)e1 << " ";////
 						pop(shuzi, b1);
 						if (!pop(shuzi, a1))
 							goto ERR;      //避免了如果先输入符号而且数字栈中只有一个数导致的变量a未被赋值
@@ -173,6 +177,7 @@ ERR:	cerr << "表达式不正确" << endl;
 		if (!pop(shuzi, a2))
 			goto ERR;////
 		pop(fuhao, e2);
+		cout << (char)e2 << " ";////
 		shuzi->data[++shuzi->top]=calculate(a2,b2,e2);
 	}
 	if (fuhao->top != -1 || shuzi->top != 0) {//如果栈里还有东西则表达式错误
@@ -190,6 +195,7 @@ int main() {
 	string suanshi="(12+50/2)-(6*8/4)";
 	cin >> suanshi;
 	int answer = zhongzhuizhuanhouzhui(suanshi);
+	cout << endl;
 	cout << suanshi << "=" << answer << endl;
 	return 0;
 }
