@@ -3,5 +3,27 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
 http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="user" class="com.atguigu.spring5.User"></bean>
+    <bean id="user" class="com.atguigu.spring5.User">
+        <!--使用property完成属性注入
+        name：类里面属性名称
+        value：向属性注入的值
+    -->
+        <property name="name" value="蒋海瑞"></property>
+        <property name="num" value="123"></property>
+        <!--（2）spring方式：有参数构造注入属性-->
+        <constructor-arg name="name" value="蒋海瑞"></constructor-arg>
+<!--        <constructor-arg index="0" value="jhr"></constructor-arg>-->
+        <constructor-arg name="num" value="123"></constructor-arg>
+        <!--<property name="name">    在属性中设置空值
+            <null/>
+        </property>-->
+        <!--（2）特殊符号赋值-->
+        <!--属性值包含特殊符号
+          a 把<>进行转义 &lt; &gt;
+          b 把带特殊符号内容写到CDATA
+         -->
+        <!--<property name="name">
+            <value><![CDATA[<<南京>>]]></value>
+        </property>-->
+    </bean>
 </beans>
