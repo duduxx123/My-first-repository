@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!--1 service和dao对象创建-->
+    <bean id="userService" class="com.atguigu.spring5.service.UserService">
+        <property name="userDao" ref="UserDaoImp"/>
+    </bean>
+    
+    <bean name="UserDaoImp" class="com.atguigu.spring5.dao.UserDaoImp"/>
+    
+</beans>
