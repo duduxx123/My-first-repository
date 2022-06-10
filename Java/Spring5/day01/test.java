@@ -13,5 +13,6 @@ public class test {
         User user = context.getBean("user", User.class);
         System.out.println(user);
         user.add();
+        user.prin();
     }
 }
