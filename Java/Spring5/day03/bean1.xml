@@ -4,33 +4,46 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
 http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="stu" class="com.atguigu.spring5.collectionType.Stu">
-<!--        数组类型属性注入-->
+        <!--        数组类型属性注入-->
         <property name="courses">
             <array>
                 <value>Java课程</value>
                 <value>数据结构</value>
             </array>
         </property>
-<!--        List类型属性注入-->
+        <!--        List类型属性注入-->
         <property name="list">
             <list>
                 <value>lmx</value>
                 <value>jhr</value>
             </list>
         </property>
-<!--        Map类型属性注入-->
+        <!--        Map类型属性注入-->
         <property name="map">
             <map>
                 <entry key="JAVA" value="java"/>
                 <entry key="PHP" value="php"/>
             </map>
         </property>
-<!--        Set类型属性注入-->
+        <!--        Set类型属性注入-->
         <property name="set">
             <set>
                 <value>MuSQL</value>
                 <value>Oracle</value>
             </set>
         </property>
+<!--        注入List集合类型，值为对象-->
+        <property name="courseList">
+            <list>
+                <ref bean="course1"/>
+                <ref bean="course2"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="course1" class="com.atguigu.spring5.collectionType.course">
+        <property name="cname" value="Spring5框架课程"/>
+    </bean>
+    <bean id="course2" class="com.atguigu.spring5.collectionType.course">
+        <property name="cname" value="MyBatis框架课程"/>
     </bean>
 </beans>
