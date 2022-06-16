@@ -5,6 +5,12 @@ public class Stu {
     private Set<String> set;
     private Map<String,String> map;
     private List<String> list;
+
+    public void setCourseList(List<course> courseList) {
+        this.courseList = courseList;
+    }
+
+    private List<course> courseList;
     public void setList(List<String> list) {
         this.list = list;
     }
@@ -16,15 +22,16 @@ public class Stu {
     public void setSet(Set<String> set) {
         this.set = set;
     }
-    
+
     public void setCourses(String[] courses) {
         this.courses = courses;
     }
-    
+
     public void test(){
         System.out.println(Arrays.toString(courses));
         System.out.println(list);
         System.out.println(map);
         System.out.println(set);
+        System.out.println(courseList);
     }
 }
