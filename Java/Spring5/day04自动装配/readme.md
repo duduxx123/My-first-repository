@@ -6,3 +6,12 @@
         byName根据属性名称注入，注入值bean的id值和类属性的名称一样
         byType根据属性类型注入-->
 ```
+```java
+@Test
+    public void autoTest(){
+        ApplicationContext context
+                =new ClassPathXmlApplicationContext("bean5.xml");
+        emm emm = context.getBean("emm", emm.class);
+        System.out.println(emm);
+    }
+ ```
