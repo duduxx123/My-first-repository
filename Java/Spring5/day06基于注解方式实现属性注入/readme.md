@@ -39,3 +39,14 @@ public class UserDaoImpl implements UserDao {
 @Qualifier(value = "userDaoImpl1") 
 private UserDao userDao;
 ```
+@Resource：可以根据类型注入，也可以根据名称注入（它属于javax包下的注解，不推荐使用！）
+```java
+//@Resource //根据类型进行注入
+@Resource(name = "userDaoImpl1") //根据名称进行注入
+private UserDao userDao;
+```
+@Value：注入普通类型属性
+```java
+@Value(value = "abc")
+private String name
+```
