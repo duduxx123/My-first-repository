@@ -46,4 +46,5 @@ int IsPopPossible(int Arry[],int M,int N)
         return 1;
     else return 0;
 }
+
 ```
