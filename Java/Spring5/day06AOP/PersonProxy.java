@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class PersonProxy {
     @Before(value = "execution(* spring5..User.add(..))")
-    @Order(1)
+    @Order(1)//（1）在增强类上面添加注解 @Order(数字类型值)，数字类型值越小优先级越高
     public void personbefore(){
         System.out.println("Person before....");
     }
