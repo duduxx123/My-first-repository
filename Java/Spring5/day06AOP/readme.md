@@ -20,3 +20,11 @@ d）切面：把通知应用到切入点过程
     }
 ```
     
+## 有多个增强类对同一个方法进行增强，设置增强类优先级
+```java
+//（1）在增强类上面添加注解 @Order(数字类型值)，数字类型值越小优先级越高
+@Component
+@Aspect
+@Order(1)
+public class PersonProxy{ }
+```
