@@ -49,4 +49,5 @@ private UserDao userDao;
 ```java
 @Value(value = "abc")
 private String name
+
 ```
