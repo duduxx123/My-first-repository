@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格标签学习</title>
+</head>
+<body>
+    <!--table为表格标签
+        行 tr
+        列 td
+        行加粗居中 th
+        border 加边框
+        cellspacing 缩小边框间隙
+        cellpading 文字离边框距离
+    -->
+    <!--form为表单标签
+        <input type="text"/>为文本类型输入框
+        其中name属性必需要指定，否则文本框内数据不会发送给服务器
+        method是表单的发送方式（默认get）
+        checked="checked"为默认选中
+    -->
+    <table border="0" width="200" cellspacing="0" cellpadding="4">
+        <tr>
+            <th>姓名</th>
+            <th>班级</th>
+            <th>年龄</th>
+        </tr>
+        <tr>
+            <td>蒋海瑞</td>
+            <td>1234</td>
+            <td>19</td>
+        </tr>
+    </table>
+    <form action="hello.html" method="post">
+        学号:<input type="text" name="nickName"/>
+        密码:<input type="password" name="pwd"/><br/>
+        性别:<input type="radio" name="sex" value="male"/>男
+        <input type="radio" name="sex" value="female" checked="checked"/>女<br/>
+        星座:<select name="star">
+                <option>白羊座</option>
+                <option>双子座</option>
+                <option>双鱼座</option>
+            </select><br/>
+        备注:<textarea name="remark" rows="4" cols="50"></textarea><br/>
+        <input type="submit" value="提交"/>
+        <input type="reset" value="重置"/>
+        <input type="button" value="普通按钮"/>
+    </form>
+</body>
+</html>
